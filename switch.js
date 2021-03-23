@@ -1,6 +1,6 @@
 let darkmode = false;
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener((_, _, sendResponse) => {
   darkmode = !darkmode;
 
   if (darkmode === true) {
