@@ -1,15 +1,54 @@
 const regex = new RegExp("^https*://docs.google.com/*", "g");
 
-// We can get the tab that was clicked from the onClicked listener but we would like to ensure it was the active tab
-// to avoid confusion with multiple instances of docs (may not be strictly neccessary)
-chrome.action.onClicked.addListener(() => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    if (tabs[0].url.match(regex)) {
-      // The { darkmode: "toggle" } message isn't read by the receiver it's just there because there needs to be a message
-      chrome.tabs.sendMessage(tabs[0].id, { darkmode: "toggle" }, (response) => {
-        // CHANGE LATER: Setting the badge text is easier than changing the icon for now.
-        chrome.action.setBadgeText({ tabId: tabs[0].id, text: response.darkmodeStatus === true ? "ON" : "OFF" });
+const docsUrl = "https://docs.google.com/*";
+const docsDarkmodeStatus = "docsDarkmodeStatus";
+
+let darkmode = true;
+
+// On initial load of the extension/chrome itself
+chrome.storage.sync.get([docsDarkmodeStatus], (result) => {
+  // If we have no previous setting then default to 'on'
+  if (result[docsDarkmodeStatus]) {
+    chrome.storage.sync.set({ [docsDarkmodeStatus]: true }, () => {
+      darkmode = true;
+
+      chrome.action.setBadgeText({ text: "ON" });
+
+      // Tell every open docs tab to become dark mode
+      chrome.tabs.query({ url: docsUrl }, (tabs) => {
+        tabs.forEach((tab) => {
+          chrome.tabs.sendMessage(tab.id, { darkmode: true });
+        });
       });
+    });
+  } else {
+    darkmode = result[docsDarkmodeStatus];
+
+    chrome.action.setBadgeText({ text: darkmode === true ? "ON" : "OFF" });
+  }
+});
+
+// On refresh/creation of a new docs tab send the darkmode message if necessary
+chrome.webNavigation.onCompleted.addListener(
+  (tab) => {
+    if (darkmode) {
+      chrome.tabs.sendMessage(tab.tabId, { darkmode });
     }
+  },
+  { url: [{ urlMatches: docsUrl }] }
+);
+
+chrome.action.onClicked.addListener(() => {
+  chrome.storage.sync.set({ [docsDarkmodeStatus]: !darkmode }, () => {
+    darkmode = !darkmode;
+
+    chrome.action.setBadgeText({ text: darkmode === true ? "ON" : "OFF" });
+
+    // Tell every open docs tab to toggle dark mode
+    chrome.tabs.query({ url: docsUrl }, (tabs) => {
+      tabs.forEach((tab) => {
+        chrome.tabs.sendMessage(tab.id, { darkmode });
+      });
+    });
   });
 });

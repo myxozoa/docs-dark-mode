@@ -3,7 +3,7 @@
   "manifest_version": 3,
   "version": "0.1",
   "description": "Dark mode for Google Docs 2021",
-  "permissions": ["tabs", "scripting"],
+  "permissions": ["tabs", "scripting", "storage", "webNavigation"],
   "host_permissions": ["https://docs.google.com/*"],
   "background": {
     "service_worker": "background.js"

@@ -1,3 +1,12 @@
-.darkMode {
-  background: black;
+:root {
+  --black: #0a0a0a;
+}
+
+.darkmode {
+  background-color: var(--black);
+}
+
+.darkmode * {
+  background-color: var(--black) !important;
+  color: white !important;
 }
