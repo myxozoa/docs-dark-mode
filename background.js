@@ -24,7 +24,7 @@ chrome.storage.sync.get([docsDarkmodeStatus], (result) => {
   } else {
     darkmode = result[docsDarkmodeStatus];
 
-    chrome.action.setBadgeText({ text: darkmode === true ? "ON" : "OFF" });
+    chrome.action.setBadgeText({ text: darkmode ? "ON" : "OFF" });
   }
 });
 
@@ -38,11 +38,12 @@ chrome.webNavigation.onCompleted.addListener(
   { url: [{ urlMatches: docsUrl }] }
 );
 
+// Triggered on every click of the extension's icon
 chrome.action.onClicked.addListener(() => {
   chrome.storage.sync.set({ [docsDarkmodeStatus]: !darkmode }, () => {
     darkmode = !darkmode;
 
-    chrome.action.setBadgeText({ text: darkmode === true ? "ON" : "OFF" });
+    chrome.action.setBadgeText({ text: darkmode ? "ON" : "OFF" });
 
     // Tell every open docs tab to toggle dark mode
     chrome.tabs.query({ url: docsUrl }, (tabs) => {

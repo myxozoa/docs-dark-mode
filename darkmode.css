@@ -1,12 +1,47 @@
 :root {
-  --black: #0a0a0a;
-}
-
-.darkmode {
-  background-color: var(--black);
+  --light-grey: #2d2d2d;
+  --medium-grey: #191919;
+  --dark-grey: #0f0f0f;
+  --text: #989ea6;
 }
 
 .darkmode * {
-  background-color: var(--black) !important;
-  color: white !important;
+  background: inherit;
+  color: inherit;
+}
+
+.darkmode {
+  background-color: var(--light-grey);
+  color: var(--text);
+}
+
+/* Dropdown menus */
+.darmode #docs-menubars {
+  background-color: var(--dark-grey) !important;
+}
+
+/* Toolbar */
+.darkmode #docs-chrome,
+.darkmode #docs-toolbar-wrapper,
+.darkmode #docs-primary-toolbars,
+.darkmode #docs-side-toolbar {
+  background-color: var(--medium-grey) !important;
+  color: var(--text);
+  border: 0 !important;
+  box-shadow: 0 !important;
+}
+
+/* Toolbar buttons */
+.darkmode #docs-toolbar * {
+  background-color: transparent !important;
+  color: var(--text);
+}
+.darkmode .docs-icon-img {
+  filter: brightness(1.6);
+}
+
+/* Editor background */
+.darkmode #docs-editor,
+.darkmode #docs-editor-container {
+  background-color: var(--light-grey) !important;
 }
