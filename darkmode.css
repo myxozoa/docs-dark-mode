@@ -1,13 +1,11 @@
+/* gonna be typing .darkmode a whole lot */
+
 :root {
   --light-grey: #2d2d2d;
   --medium-grey: #191919;
   --dark-grey: #0f0f0f;
   --text: #989ea6;
-}
-
-.darkmode * {
-  background: inherit;
-  color: inherit;
+  --text-disabled: #585b5e;
 }
 
 .darkmode {
@@ -15,19 +13,65 @@
   color: var(--text);
 }
 
-/* Dropdown menus */
-.darmode #docs-menubars {
-  background-color: var(--dark-grey) !important;
+/* Disabled */
+.darkmode .goog-menuitem-disabled:not(_):not(_):not(_),
+.darkmode .goog-menuitem-disabled * {
+  color: var(--text-disabled) !important;
+}
+.darkmode [aria-hidden="true"] {
+  color: var(--text-disabled) !important;
+}
+
+/* Dropdowns */
+.darkmode .goog-menu,
+.darkmode .goog-menu *:not(.docs-material-colorpalette-colorswatch) {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+}
+
+/* Top menus */
+.darkmode #docs-chrome,
+.darkmode #docs-menubars,
+.darkmode #docs-menubars *,
+.darkmode .docs-titlebar-buttons,
+.darkmode .docs-companion-app-switcher-container,
+.darkmode .companion-app-switcher-container {
+  background-color: var(--medium-grey) !important;
+  color: var(--text);
+}
+
+.darkmode .docs-companion-app-switcher-container,
+.darkmode .companion-app-switcher-container {
+  border-color: var(--medium-grey);
+}
+
+.darkmode .docs-title-input {
+  background-color: var(--medium-grey) !important;
+}
+
+/* Rulers */
+.darkmode #kix-horizontal-ruler,
+.darkmode #kix-vertical-ruler {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--medium-grey);
+}
+
+.darkmode .docs-ruler-face-inner > * {
+  border-left-color: var(--text) !important;
+}
+
+.darkmode .docs-ruler-background-inner {
+  background-color: var(--light-grey) !important;
 }
 
 /* Toolbar */
-.darkmode #docs-chrome,
 .darkmode #docs-toolbar-wrapper,
 .darkmode #docs-primary-toolbars,
-.darkmode #docs-side-toolbar {
-  background-color: var(--medium-grey) !important;
+.darkmode #docs-side-toolbar,
+.darkmode #docs-side-toolbar *:not(.goog-toolbar-menu-button-dropdown):not(.docs-icon-img) {
+  background-color: var(--dark-grey) !important;
   color: var(--text);
-  border: 0 !important;
+  border-color: var(--dark-grey) !important;
   box-shadow: 0 !important;
 }
 
@@ -36,12 +80,38 @@
   background-color: transparent !important;
   color: var(--text);
 }
-.darkmode .docs-icon-img {
+.darkmode #fontSizeDecrement:not(_):not(_):not(_),
+.darkmode #fontSizeSelect:not(_):not(_):not(_),
+.darkmode #fontSizeIncrement:not(_):not(_):not(_) {
+  border-color: var(--text) !important;
+}
+
+/* Icon */
+.darkmode .docs-icon-img,
+.darkmode .docs-icon-img-container {
+  background-color: transparent !important;
   filter: brightness(1.6);
+}
+
+.darkmode .docs-preview-palette-item {
+  border-color: var(--text-disabled) !important;
+}
+
+.darkmode .docs-listpreset-img {
+  filter: contrast(0.9) invert(1);
+}
+
+.darkmode .docs-titlebar-badge:hover {
+  background-color: var(--light-grey) !important;
 }
 
 /* Editor background */
 .darkmode #docs-editor,
-.darkmode #docs-editor-container {
+.darkmode #docs-editor-container,
+.darkmode .kix-appview-editor {
   background-color: var(--light-grey) !important;
+}
+
+.darkmode .kix-page {
+  background-color: var(--medium-grey) !important;
 }
