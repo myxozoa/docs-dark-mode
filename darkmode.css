@@ -1,16 +1,161 @@
 /* gonna be typing .darkmode a whole lot */
+/* some of these classes were picked a little haphazardly, hopefully they wont be subject to much change over time */
 
 :root {
   --light-grey: #2d2d2d;
   --medium-grey: #191919;
   --dark-grey: #0f0f0f;
-  --text: #989ea6;
+  --text: #b9bdc5;
   --text-disabled: #585b5e;
 }
 
 .darkmode {
   background-color: var(--light-grey);
   color: var(--text);
+}
+
+/* Global fixes */
+.darkmode ::-webkit-scrollbar,
+.darkmode ::-webkit-scrollbar-track {
+  background-color: var(--medium-grey) !important;
+}
+
+.darkmode ::-webkit-scrollbar-thumb {
+  background-color: var(--light-grey) !important;
+}
+
+.darkmode .goog-menuitem-checkbox.goog-menuitem-checkbox {
+  filter: invert(1);
+  background-color: transparent !important;
+}
+
+.darkmode .docs-icon,
+.darkmode .docs-icon-img {
+  background-color: transparent !important;
+}
+
+.darkmode .goog-flat-menu-button-caption {
+  color: var(--text) !important;
+}
+
+.darkmode .jfk-textinput {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .jfk-textinput:focus {
+  border-color: var(--text-disabled) !important;
+}
+
+.darkmode .docs-material {
+  background-color: var(--medium-grey) !important;
+}
+
+/* App Switcher */
+.darkmode .app-switcher-button-hover .app-switcher-button-icon-background {
+  background-color: var(--light-grey) !important;
+}
+
+.darkmode .companion-collapser-button.app-switcher-button-checked .app-switcher-button-icon-background,
+.darkmode .app-switcher-button-focused .app-switcher-button-icon-background {
+  background-color: var(--light-grey) !important;
+}
+
+/* ---------------------------- Modals ---------------------------------------- */
+.darkmode .modal-dialog,
+.darkmode .modal-dialog-title,
+.darkmode .modal-dialog-content {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .modal-dialog-title-text {
+  color: var(--text) !important;
+}
+
+.darkmode .jfk-butterBar {
+  background-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .modal-dialog-buttons button:not(.goog-buttonset-action) {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .docs-preferencesdialog-list-body {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.darkmode .kix-pagesetupdialog-units {
+  color: var(--text) !important;
+}
+
+.darkmode .docs-findinput-container,
+.darkmode #docs-findandreplacedialog-input,
+.darkmode .docs-smart-link-searchinput-search-container,
+.darkmode .docs-userdictionarydialog-input {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .docs-userdictionarydialog-row-container {
+  border-color: var(--light-grey) !important;
+}
+
+.darkmode .docs-userdictionarydialog-row-content {
+  color: var(--text) !important;
+}
+
+.darkmode .darkmode .docs-userdictionarydialog-row-container *:hover,
+.darkmode .docs-userdictionarydialog-row-container-hover,
+.darkmode .docs-userdictionarydialog-row-container-hover:hover,
+.darkmode .docs-userdictionarydialog-row-container:hover {
+  background-color: var(--light-grey) !important;
+}
+
+.darkmode #docs-findinput-container-focus,
+.darkmode .docs-userdictionarydialog-input:focus {
+  border-color: var(--text-disabled) !important;
+}
+
+.darkmode .docs-userdictionarydialog-list-container {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.darkmode .docs-details-table td {
+  color: var(--text) !important;
+}
+
+.darkmode .modal-dialog-title-close {
+  filter: invert(1);
+}
+
+.darkmode .modal-dialog-title-close:hover {
+  background-color: var(--text) !important;
+}
+
+.darkmode .docs-customspacingdialog-linespacing,
+.darkmode .docs-customspacingdialog-title,
+.darkmode .docs-customspacingdialog-paragraphspacing-label {
+  color: var(--text) !important;
+}
+
+/* --------------------------- Document Editing ------------------------------------ */
+
+.darkmode .left-sidebar-container[style*="width: 280px"] {
+  /* Not a super good solution for this selector */
+  background-color: var(--medium-grey) !important;
+}
+
+.darkmode #navigation-widget-bottom-fade {
+  background: linear-gradient(rgba(255, 255, 255, 0) 0%, var(--medium-grey) 100%) !important;
 }
 
 /* Disabled */
@@ -24,7 +169,7 @@
 
 /* Dropdowns */
 .darkmode .goog-menu,
-.darkmode .goog-menu *:not(.docs-material-colorpalette-colorswatch) {
+.darkmode .goog-menu *:not(.docs-material-colorpalette-colorswatch):not(.goog-menuitem-checkbox):not(.docs-icon):not(.docs-icon-img) {
   background-color: var(--medium-grey) !important;
   color: var(--text) !important;
 }
@@ -46,6 +191,14 @@
 }
 
 .darkmode .docs-title-input {
+  background-color: var(--medium-grey) !important;
+  color: transparent !important;
+}
+
+.darkmode .docs-title-input:hover:not(_):not(_):not(_),
+.darkmode .docs-title-input:focus:not(_):not(_):not(_) {
+  color: var(--text) !important;
+  border-color: var(--light-grey) !important;
   background-color: var(--medium-grey) !important;
 }
 
@@ -75,15 +228,24 @@
   box-shadow: 0 !important;
 }
 
+.darkmode .kix-toc-img {
+  filter: contrast(0.9) invert(1);
+}
+
 /* Toolbar buttons */
-.darkmode #docs-toolbar * {
+.darkmode #docs-toolbar *,
+.darkmode .docs-toolbar-more-toolbar * {
   background-color: transparent !important;
   color: var(--text);
 }
 .darkmode #fontSizeDecrement:not(_):not(_):not(_),
 .darkmode #fontSizeSelect:not(_):not(_):not(_),
 .darkmode #fontSizeIncrement:not(_):not(_):not(_) {
-  border-color: var(--text) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.darkmode .goog-toolbar-separator {
+  border-color: var(--light-grey) !important;
 }
 
 /* Icon */
@@ -105,6 +267,17 @@
   background-color: var(--light-grey) !important;
 }
 
+/* Dictionary Sidebar */
+
+.darkmode .docs-explore-dictionaryentries,
+.darkmode .docs-explore-dictionaryentry-title {
+  color: var(--text) !important;
+}
+
+.darkmode .docs-explore-dictionaryentry-sensefamily-morphunits {
+  color: var(--dark-grey) !important;
+}
+
 /* Editor background */
 .darkmode #docs-editor,
 .darkmode #docs-editor-container,
@@ -112,6 +285,185 @@
   background-color: var(--light-grey) !important;
 }
 
-.darkmode .kix-page {
+.darkmode .kix-page,
+.darkmode .kix-paginateddocumentplugin-compact-mode-box-shadow {
   background-color: var(--medium-grey) !important;
+}
+
+/* Text editor */
+.darkmode .kix-wordhtmlgenerator-word-node[style*="color:#000000"] {
+  /* Displays any black (#000000) text as our new white color */
+  color: var(--text) !important;
+}
+
+.darkmode .kix-cursor-caret[style*="border-color: rgb(0, 0, 0)"] {
+  /* The google docs cursor (caret?) color is changed based on the text color that will be used while typing
+     so we check to see if pure black is going to be used and change it to our new text color to maintain
+     consistency
+  */
+  border-color: var(--text) !important;
+}
+
+.darkmode #docs-instant-bubble {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.darkmode .goog-control-hover:not(.docs-homescreen-templates-templateview) {
+  background-color: var(--light-grey) !important;
+}
+
+/* Comment Modal */
+.darkmode .docos-anchoredreplyview,
+.darkmode .docos-anchoreddocoview-input-pane {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.darkmode .docos-input-textarea {
+  border-color: var(--light-grey) !important;
+}
+
+.darkmode .docos-input-typing > .docos-input-textarea {
+  color: var(--text) !important;
+}
+
+.darkmode .docos-anchoredreplyview-author,
+.darkmode .docos-anchoredreplyview * {
+  color: var(--text) !important;
+}
+
+.darkmode .docos-anchoreddocoview {
+  /* the background of this one acts like a border on the modal */
+  background-color: var(--light-grey) !important;
+}
+
+.darkmode .jfk-button.jfk-button-standard,
+.darkmode .jfk-button.jfk-button-standard.jfk-button-hover {
+  background-color: var(--light-grey) !important;
+  color: var(--text) !important;
+  border-color: transparent !important;
+}
+
+.darkmode .docos-icon-img {
+  filter: invert(1);
+}
+
+/* comment viewer pane */
+.darkmode .docos-streampane-header,
+.darkmode .streampane-dragger {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.darkmode .docos-comment-text {
+  color: var(--text) !important;
+}
+
+.darkmode .docos-streamdocoview,
+.darkmode .docos-streamreplyview,
+.darkmode .docos-streamdocoview-inputcontainer,
+.darkmode .docos-input-textarea {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .docos-streamdocoview-body,
+.darkmode .docos-streamdocoview-body * {
+  color: var(--text) !important;
+}
+
+.darkmode .docs-material-menu-button-flat-default,
+.darkmode .docs-material-menu-button-flat-default:hover {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .docos-new-comment-button,
+.darkmode .goog-flat-menu-button {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+/* -------------------- Home Page ------------------------- */
+
+/* Background and slide-out hamburger menu */
+.darkmode header,
+.darkmode .gb_Bc,
+.darkmode .docs-homescreen-container,
+.darkmode .docs-homescreen-fcc-content {
+  background-color: var(--medium-grey) !important;
+}
+
+/* template gallery top bar thing */
+.darkmode .docs-homescreen-templates-bar-content {
+  background: var(--dark-grey) !important;
+}
+
+/* search bar */
+.darkmode .gb_Ve,
+.darkmode .gb_Ve input {
+  background-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .gb_Ve input::placeholder {
+  color: var(--text-disabled) !important;
+}
+
+.darkmode .docs-homescreen-container * {
+  color: var(--text) !important;
+}
+
+/* google doc thumbnails */
+.darkmode .docs-homescreen-templates-templateview,
+.darkmode .docs-homescreen-grid-item-thumbnail {
+  filter: contrast(0.9) invert(1);
+}
+
+.darkmode .docs-homescreen-itemholder-content,
+.darkmode .docs-homescreen-grid-header,
+.darkmode .docs-homescreen-grid-item,
+.darkmode .docs-hs-tmp-contractedheader-more,
+.darkmode .docs-homescreen-owner-filter-button {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .docs-homescreen-grid-item,
+.darkmode .docs-homescreen-grid-item-metadata-container {
+  border-color: var(--text-disabled) !important;
+}
+
+/* Google profile dropdown */
+.darkmode .gb_l {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+}
+
+.darkmode .gb_Mb:hover {
+  background-color: var(--light-grey) !important;
+}
+
+.darkmode .gb_Mb *,
+.darkmode .gb_cb *,
+.darkmode .gb_wb *,
+.darkmode .gb_Db {
+  color: var(--text) !important;
+}
+
+.darkmode .gb_Jb,
+.darkmode .gb_Cb {
+  border-color: var(--light-grey) !important;
+}
+
+.darkmode .gb_cb a,
+.darkmode .gb_wb,
+.darkmode .gb_Db {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
 }

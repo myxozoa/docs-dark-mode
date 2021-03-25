@@ -28,12 +28,17 @@ chrome.storage.sync.get([docsDarkmodeStatus], (result) => {
   }
 });
 
-// On refresh/creation of a new docs tab send the darkmode message if necessary
-chrome.webNavigation.onCompleted.addListener(
+// On refresh or the creation of a new docs tab send the darkmode message if necessary
+chrome.webNavigation.onBeforeNavigate.addListener(
   (tab) => {
-    if (darkmode) {
-      chrome.tabs.sendMessage(tab.tabId, { darkmode });
-    }
+    chrome.tabs.sendMessage(tab.tabId, { darkmode });
+  },
+  { url: [{ urlMatches: docsUrl }] }
+);
+
+chrome.webNavigation.onDOMContentLoaded.addListener(
+  (tab) => {
+    chrome.tabs.sendMessage(tab.tabId, { darkmode });
   },
   { url: [{ urlMatches: docsUrl }] }
 );
