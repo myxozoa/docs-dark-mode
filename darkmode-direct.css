@@ -1,0 +1,469 @@
+/* gonna be typing a whole lot */
+/* some of these classes were picked a little haphazardly, hopefully they wont be subject to much change over time */
+
+:root {
+  --light-grey: #2d2d2d;
+  --medium-grey: #191919;
+  --dark-grey: #0f0f0f;
+  --text: #b9bdc5;
+  --text-disabled: #585b5e;
+}
+
+body {
+  background-color: var(--light-grey);
+  color: var(--text);
+}
+
+/* Global fixes */
+::-webkit-scrollbar,
+::-webkit-scrollbar-track {
+  background-color: var(--medium-grey) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--light-grey) !important;
+}
+
+.goog-menuitem-checkbox.goog-menuitem-checkbox {
+  filter: invert(1);
+  background-color: transparent !important;
+}
+
+.docs-icon,
+.docs-icon-img {
+  background-color: transparent !important;
+}
+
+.goog-flat-menu-button-caption {
+  color: var(--text) !important;
+}
+
+.jfk-textinput {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.jfk-textinput:focus {
+  border-color: var(--text-disabled) !important;
+}
+
+.docs-material {
+  background-color: var(--medium-grey) !important;
+}
+
+/* App Switcher */
+.app-switcher-button-hover .app-switcher-button-icon-background {
+  background-color: var(--light-grey) !important;
+}
+
+.companion-collapser-button.app-switcher-button-checked .app-switcher-button-icon-background,
+.app-switcher-button-focused .app-switcher-button-icon-background {
+  background-color: var(--light-grey) !important;
+}
+
+/* ---------------------------- Modals ---------------------------------------- */
+.modal-dialog,
+.modal-dialog-title,
+.modal-dialog-content {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+}
+
+.modal-dialog-title-text {
+  color: var(--text) !important;
+}
+
+.jfk-butterBar {
+  background-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.modal-dialog-buttons button:not(.goog-buttonset-action) {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.docs-preferencesdialog-list-body {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.kix-pagesetupdialog-units {
+  color: var(--text) !important;
+}
+
+.docs-findinput-container,
+#docs-findandreplacedialog-input,
+.docs-smart-link-searchinput-search-container,
+.docs-userdictionarydialog-input {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.docs-userdictionarydialog-row-container {
+  border-color: var(--light-grey) !important;
+}
+
+.docs-userdictionarydialog-row-content {
+  color: var(--text) !important;
+}
+
+.docs-userdictionarydialog-row-container *:hover,
+.docs-userdictionarydialog-row-container-hover,
+.docs-userdictionarydialog-row-container-hover:hover,
+.docs-userdictionarydialog-row-container:hover {
+  background-color: var(--light-grey) !important;
+}
+
+#docs-findinput-container-focus,
+.docs-userdictionarydialog-input:focus {
+  border-color: var(--text-disabled) !important;
+}
+
+.docs-userdictionarydialog-list-container {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.docs-details-table td {
+  color: var(--text) !important;
+}
+
+.modal-dialog-title-close {
+  filter: invert(1);
+}
+
+.modal-dialog-title-close:hover {
+  background-color: var(--text) !important;
+}
+
+.docs-customspacingdialog-linespacing,
+.docs-customspacingdialog-title,
+.docs-customspacingdialog-paragraphspacing-label {
+  color: var(--text) !important;
+}
+
+/* --------------------------- Document Editing ------------------------------------ */
+
+.left-sidebar-container[style*="width: 280px"] {
+  /* Not a super good solution for this selector */
+  background-color: var(--medium-grey) !important;
+}
+
+#navigation-widget-bottom-fade {
+  background: linear-gradient(rgba(255, 255, 255, 0) 0%, var(--medium-grey) 100%) !important;
+}
+
+/* Disabled */
+.goog-menuitem-disabled:not(_):not(_):not(_),
+.goog-menuitem-disabled * {
+  color: var(--text-disabled) !important;
+}
+[aria-hidden="true"] {
+  color: var(--text-disabled) !important;
+}
+
+/* Dropdowns */
+.goog-menu,
+.goog-menu *:not(.docs-material-colorpalette-colorswatch):not(.goog-menuitem-checkbox):not(.docs-icon):not(.docs-icon-img) {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+}
+
+/* Top menus */
+#docs-chrome,
+#docs-menubars,
+#docs-menubars *,
+.docs-titlebar-buttons,
+.docs-companion-app-switcher-container,
+.companion-app-switcher-container {
+  background-color: var(--medium-grey) !important;
+  color: var(--text);
+}
+
+.docs-companion-app-switcher-container,
+.companion-app-switcher-container {
+  border-color: var(--medium-grey);
+}
+
+.docs-title-input {
+  background-color: var(--medium-grey) !important;
+  color: transparent !important;
+}
+
+.docs-title-input:hover:not(_):not(_):not(_),
+.docs-title-input:focus:not(_):not(_):not(_) {
+  color: var(--text) !important;
+  border-color: var(--light-grey) !important;
+  background-color: var(--medium-grey) !important;
+}
+
+/* Rulers */
+#kix-horizontal-ruler,
+#kix-vertical-ruler {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--medium-grey);
+}
+
+.docs-ruler-face-inner > * {
+  border-left-color: var(--text) !important;
+}
+
+.docs-ruler-background-inner {
+  background-color: var(--light-grey) !important;
+}
+
+/* Toolbar */
+#docs-toolbar-wrapper,
+#docs-primary-toolbars,
+#docs-side-toolbar,
+#docs-side-toolbar *:not(.goog-toolbar-menu-button-dropdown):not(.docs-icon-img) {
+  background-color: var(--dark-grey) !important;
+  color: var(--text);
+  border-color: var(--dark-grey) !important;
+  box-shadow: 0 !important;
+}
+
+.kix-toc-img {
+  filter: contrast(0.9) invert(1);
+}
+
+/* Toolbar buttons */
+#docs-toolbar *,
+.docs-toolbar-more-toolbar * {
+  background-color: transparent !important;
+  color: var(--text);
+}
+#fontSizeDecrement:not(_):not(_):not(_),
+#fontSizeSelect:not(_):not(_):not(_),
+#fontSizeIncrement:not(_):not(_):not(_) {
+  border-color: var(--light-grey) !important;
+}
+
+.goog-toolbar-separator {
+  border-color: var(--light-grey) !important;
+}
+
+/* Icon */
+.docs-icon-img,
+.docs-icon-img-container {
+  background-color: transparent !important;
+  filter: brightness(1.6);
+}
+
+.docs-preview-palette-item {
+  border-color: var(--text-disabled) !important;
+}
+
+.docs-listpreset-img {
+  filter: contrast(0.9) invert(1);
+}
+
+.docs-titlebar-badge:hover {
+  background-color: var(--light-grey) !important;
+}
+
+/* Dictionary Sidebar */
+
+.docs-explore-dictionaryentries,
+.docs-explore-dictionaryentry-title {
+  color: var(--text) !important;
+}
+
+.docs-explore-dictionaryentry-sensefamily-morphunits {
+  color: var(--dark-grey) !important;
+}
+
+/* Editor background */
+#docs-editor,
+#docs-editor-container,
+.kix-appview-editor {
+  background-color: var(--light-grey) !important;
+}
+
+.kix-page,
+.kix-paginateddocumentplugin-compact-mode-box-shadow {
+  background-color: var(--medium-grey) !important;
+}
+
+/* Text editor */
+.kix-wordhtmlgenerator-word-node[style*="color:#000000"] {
+  /* Displays any black (#000000) text as our new white color */
+  color: var(--text) !important;
+}
+
+.kix-cursor-caret[style*="border-color: rgb(0, 0, 0)"] {
+  /* The google docs cursor (caret?) color is changed based on the text color that will be used while typing
+     so we check to see if pure black is going to be used and change it to our new text color to maintain
+     consistency
+  */
+  border-color: var(--text) !important;
+}
+
+#docs-instant-bubble {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.goog-control-hover:not(.docs-homescreen-templates-templateview) {
+  background-color: var(--light-grey) !important;
+}
+
+/* Comment Modal */
+.docos-anchoredreplyview,
+.docos-anchoreddocoview-input-pane {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.docos-input-textarea {
+  border-color: var(--light-grey) !important;
+}
+
+.docos-input-typing > .docos-input-textarea {
+  color: var(--text) !important;
+}
+
+.docos-anchoredreplyview-author,
+.docos-anchoredreplyview * {
+  color: var(--text) !important;
+}
+
+.docos-anchoreddocoview {
+  /* the background of this one acts like a border on the modal */
+  background-color: var(--light-grey) !important;
+}
+
+.jfk-button.jfk-button-standard,
+.jfk-button.jfk-button-standard.jfk-button-hover {
+  background-color: var(--light-grey) !important;
+  color: var(--text) !important;
+  border-color: transparent !important;
+}
+
+.docos-icon-img {
+  filter: invert(1);
+}
+
+/* comment viewer pane */
+.docos-streampane-header,
+.streampane-dragger {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+  border-color: var(--light-grey) !important;
+}
+
+.docos-comment-text {
+  color: var(--text) !important;
+}
+
+.docos-streamdocoview,
+.docos-streamreplyview,
+.docos-streamdocoview-inputcontainer,
+.docos-input-textarea {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.docos-streamdocoview-body,
+.docos-streamdocoview-body * {
+  color: var(--text) !important;
+}
+
+.docs-material-menu-button-flat-default,
+.docs-material-menu-button-flat-default:hover {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.docos-new-comment-button,
+.goog-flat-menu-button {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+/* -------------------- Home Page ------------------------- */
+
+/* Background and slide-out hamburger menu */
+header,
+.gb_Bc,
+.docs-homescreen-container,
+.docs-homescreen-fcc-content {
+  background-color: var(--medium-grey) !important;
+}
+
+/* template gallery top bar thing */
+.docs-homescreen-templates-bar-content {
+  background: var(--dark-grey) !important;
+}
+
+/* search bar */
+.gb_Ve,
+.gb_Ve input {
+  background-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.gb_Ve input::placeholder {
+  color: var(--text-disabled) !important;
+}
+
+.docs-homescreen-container * {
+  color: var(--text) !important;
+}
+
+/* google doc thumbnails */
+.docs-homescreen-templates-templateview,
+.docs-homescreen-grid-item-thumbnail {
+  filter: contrast(0.9) invert(1);
+}
+
+.docs-homescreen-itemholder-content,
+.docs-homescreen-grid-header,
+.docs-homescreen-grid-item,
+.docs-hs-tmp-contractedheader-more,
+.docs-homescreen-owner-filter-button {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+}
+
+.docs-homescreen-grid-item,
+.docs-homescreen-grid-item-metadata-container {
+  border-color: var(--text-disabled) !important;
+}
+
+/* Google profile dropdown */
+.gb_l {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+}
+
+.gb_Mb:hover {
+  background-color: var(--light-grey) !important;
+}
+
+.gb_Mb *,
+.gb_cb *,
+.gb_wb *,
+.gb_Db {
+  color: var(--text) !important;
+}
+
+.gb_Jb,
+.gb_Cb {
+  border-color: var(--light-grey) !important;
+}
+
+.gb_cb a,
+.gb_wb,
+.gb_Db {
+  background-color: var(--medium-grey) !important;
+  border-color: var(--light-grey) !important;
+}
