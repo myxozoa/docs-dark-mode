@@ -8,14 +8,6 @@
   "background": {
     "service_worker": "background.js"
   },
-  "content_scripts": [
-    {
-      "matches": ["https://docs.google.com/*"],
-      "css": ["blank.css"],
-      "run_at": "document_start",
-      "all_frames": true
-    }
-  ],
   "web_accessible_resources": [{ "resources": ["darkmode-direct.css"], "matches": ["https://docs.google.com/*"] }],
   "action": {
     "default_icon": {
