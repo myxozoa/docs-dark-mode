@@ -24,8 +24,6 @@ const insertCSS = () => {
 };
 
 const triggerDarkmode = (id) => {
-  // if (!id) return;
-
   if (darkmodeStatus) {
     chrome.scripting.executeScript({
       target: { tabId: id, allFrames: true },
@@ -46,12 +44,11 @@ chrome.storage.sync.get([docsDarkmodeStatus], (result) => {
     chrome.storage.sync.set({ [docsDarkmodeStatus]: true }, () => {
       darkmodeStatus = true;
 
-      chrome.action.setBadgeText({ text: "ON" });
+      chrome.action.setIcon({ path: { 16: "icons/dark-on-16x16", 32: "icons/dark-on-32x32", 64: "icons/dark-on-64x64" } });
 
       // Tell every open docs tab to become dark mode
       chrome.tabs.query({ url: docsUrl }, (tabs) => {
         tabs.forEach((tab) => {
-          // chrome.tabs.sendMessage(tab.id, { darkmode: true });
           triggerDarkmode(tab.id);
         });
       });
@@ -59,14 +56,14 @@ chrome.storage.sync.get([docsDarkmodeStatus], (result) => {
   } else {
     darkmodeStatus = result[docsDarkmodeStatus];
 
-    chrome.action.setBadgeText({ text: darkmodeStatus ? "ON" : "OFF" });
+    const onOrOff = darkmodeStatus ? "on" : "off";
+    chrome.action.setIcon({ path: { 16: `icons/dark-${onOrOff}-16x16`, 32: `icons/dark-${onOrOff}-32x32`, 64: `icons/dark-${onOrOff}-64x64` } });
   }
 });
 
 // On refresh or the creation of a new docs tab send the darkmode message if necessary
 chrome.webNavigation.onCommitted.addListener(
   (tab) => {
-    // chrome.tabs.sendMessage(tab.tabId, { darkmode });
     triggerDarkmode(tab.tabId);
   },
   { url: [{ urlMatches: docsUrl }] }
@@ -74,7 +71,6 @@ chrome.webNavigation.onCommitted.addListener(
 
 chrome.webNavigation.onHistoryStateUpdated.addListener(
   (tab) => {
-    // chrome.tabs.sendMessage(tab.tabId, { darkmode });
     triggerDarkmode(tab.tabId);
   },
   { url: [{ urlMatches: docsUrl }] }
@@ -85,12 +81,12 @@ chrome.action.onClicked.addListener(() => {
   chrome.storage.sync.set({ [docsDarkmodeStatus]: !darkmodeStatus }, () => {
     darkmodeStatus = !darkmodeStatus;
 
-    chrome.action.setBadgeText({ text: darkmodeStatus ? "ON" : "OFF" });
+    const onOrOff = darkmodeStatus ? "on" : "off";
+    chrome.action.setIcon({ path: { 16: `icons/dark-${onOrOff}-16x16.png`, 32: `icons/dark-${onOrOff}-32x32.png`, 64: `icons/dark-${onOrOff}-64x64.png` } });
 
     // Tell every open docs tab to toggle dark mode
     chrome.tabs.query({ url: docsUrl }, (tabs) => {
       tabs.forEach((tab) => {
-        // chrome.tabs.sendMessage(tab.id, { darkmode });
         triggerDarkmode(tab.id);
       });
     });

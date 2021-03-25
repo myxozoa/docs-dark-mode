@@ -12,7 +12,6 @@
     {
       "matches": ["https://docs.google.com/*"],
       "css": ["blank.css"],
-      "js": ["switch.js"],
       "run_at": "document_start",
       "all_frames": true
     }
@@ -20,7 +19,9 @@
   "web_accessible_resources": [{ "resources": ["darkmode-direct.css"], "matches": ["https://docs.google.com/*"] }],
   "action": {
     "default_icon": {
-      "32": "icon.png"
+      "16": "icons/dark-on-16x16.png",
+      "32": "icons/dark-on-32x32.png",
+      "64": "icons/dark-on-64x64.png"
     }
   },
   "offline_enabled": true
