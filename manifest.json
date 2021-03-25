@@ -12,7 +12,8 @@
     {
       "matches": ["https://docs.google.com/*"],
       "css": ["darkmode.css"],
-      "js": ["switch.js"]
+      "js": ["switch.js"],
+      "run_at": "document_end"
     }
   ],
   "action": {
