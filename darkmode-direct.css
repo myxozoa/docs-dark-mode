@@ -137,6 +137,11 @@ iframe {
   border-color: var(--light-grey) !important;
 }
 
+.docsshared-menu-bubble {
+  background-color: var(--medium-grey) !important;
+  box-shadow: none !important;
+}
+
 /* App Switcher */
 .app-switcher-button-hover .app-switcher-button-icon-background {
   background-color: var(--light-grey) !important;
@@ -245,6 +250,10 @@ iframe {
   color: var(--text-disabled) !important;
 }
 
+.docs-docos-activitybox {
+  background-color: var(--medium-grey) !important;
+}
+
 /* check up dialog */
 
 .docs-checkupdialog-content-container {
@@ -280,25 +289,42 @@ iframe {
   background: linear-gradient(rgba(255, 255, 255, 0) 0%, var(--medium-grey) 100%) !important;
 }
 
-/* Disabled */
-.goog-menuitem-disabled:not(_):not(_):not(_),
-.goog-menuitem-disabled * {
-  color: var(--text-disabled) !important;
-}
-[aria-hidden="true"] {
-  color: var(--text-disabled) !important;
-}
-
 /* Dropdowns */
 .goog-menu,
 .goog-menu
-  *:not(.docs-material-colorpalette-colorswatch):not(.goog-menuitem-checkbox):not(.docs-icon):not(.docs-icon-img):not(.goog-dimension-picker-unhighlighted):not(.goog-dimension-picker-highlighted):not(.docs-homescreen-overflowmenuitem-icon):not(.docs-homescreen-icon):not(.docs-homescreen-img) {
+  *:not(.docs-material-colorpalette-colorswatch, .goog-menuitem-checkbox, .docs-icon, .docs-icon-img, .goog-dimension-picker-unhighlighted, .goog-dimension-picker-highlighted, .docs-homescreen-overflowmenuitem-icon, .docs-homescreen-icon, .docs-homescreen-img) {
   background-color: var(--medium-grey) !important;
   color: var(--text) !important;
 }
 
+/* Disabled */
+.goog-menu .goog-menuitem-disabled,
+.goog-menu .goog-menuitem-disabled *,
+.goog-menu .goog-menuitem-disabled > .goog-menuitem-content > .goog-menuitem-label,
+.goog-menu .goog-menuitem-disabled .goog-menuitem-mnemonic-hint,
+.goog-menu .goog-menuitem-disabled .goog-submenu-arrow {
+  color: var(--text-disabled) !important;
+}
+
+.goog-menuitem-disabled[aria-hidden="true"] {
+  color: var(--text-disabled) !important;
+}
+
 .apps-hoverable-menu-separator-bottom {
   border-color: var(--light-grey) !important;
+}
+
+.kix-spell-bubble {
+  border-color: var(--light-grey) !important;
+}
+
+.kix-spell-bubble-suggestion-text {
+  color: var(--text) !important;
+}
+
+.kix-spell-bubble-option:hover,
+.kix-spell-bubble-suggestion-text:hover {
+  background-color: var(--text-disabled) !important;
 }
 
 /* insert table size menu */
@@ -316,6 +342,7 @@ iframe {
 
 /* Top menus */
 #docs-chrome,
+.docs-revisions-chromecover-content,
 #docs-menubars,
 #docs-menubars *,
 .docs-titlebar-buttons,
@@ -325,16 +352,34 @@ iframe {
   color: var(--text) !important;
 }
 
+.docs-title-widget {
+  /* bottom border of the document title input was getting cut off by the background on the menu below it */
+  z-index: 1;
+}
+
 .docs-title-input {
   background-color: var(--medium-grey) !important;
   color: transparent !important;
 }
 
-.docs-title-input:hover:not(_):not(_):not(_),
-.docs-title-input:focus:not(_):not(_):not(_) {
+.docs-parent-collections-container-text,
+.docs-parent-collections-container-folder-name {
+  color: var(--text) !important;
+}
+
+.docs-title-input.docs-title-input:hover:not(_):not(_):not(_),
+.docs-title-input.docs-title-input:focus:not(_):not(_):not(_) {
   color: var(--text) !important;
   border-color: var(--light-grey) !important;
   background-color: var(--medium-grey) !important;
+}
+
+.docs-title-input.docs-title-input:focus:not(_):not(_):not(_) {
+  border-color: var(--text-disabled) !important;
+}
+
+.docs-title-input.docs-title-input::selection {
+  background-color: var(--text-disabled) !important;
 }
 
 #numberedListPresetMenuButton,
@@ -479,6 +524,7 @@ iframe {
   border-color: var(--text) !important;
 }
 
+.kix-spelling-error-selection-overlay,
 .kix-commentoverlayrenderer-highlighted {
   background-color: var(--highlight) !important;
 }
@@ -487,6 +533,7 @@ iframe {
 }
 
 /* Text editor */
+.kix-lineview-text-block[style*="color:#000000"],
 .kix-wordhtmlgenerator-word-node[style*="color:#000000"] {
   /* Displays any black (#000000) text as our new white color */
   color: var(--text) !important;
@@ -497,6 +544,11 @@ iframe {
      so we check to see if pure black is going to be used and change it to our new text color to maintain
      consistency
   */
+  border-color: var(--text) !important;
+}
+
+.kix-lineview-decorations > div[style*="solid #000000"] {
+  /* Text underline */
   border-color: var(--text) !important;
 }
 
@@ -512,7 +564,7 @@ iframe {
 
 .goog-control-focused {
   background-color: var(--light-grey) !important;
-  border: 0 !important;
+  border-color: transparent !important;
 }
 
 /* Insert Special Characters */
@@ -730,5 +782,5 @@ header,
 }
 
 .docs-homescreen-list-item-icon {
-  border: 0 !important;
+  border-color: transparent !important;
 }
