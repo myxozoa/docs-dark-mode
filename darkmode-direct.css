@@ -21,18 +21,25 @@ body,
 }
 
 /* Global fixes */
+/* scrollbars */
 ::-webkit-scrollbar,
-::-webkit-scrollbar-track {
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+.docs-explore-serp-webresultsview::-webkit-scrollbar,
+.docs-explore-serp-webresultsview::-webkit-scrollbar-track {
   background-color: var(--medium-grey) !important;
 }
 
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb,
+.docs-explore-serp-webresultsview::-webkit-scrollbar-thumb {
   background-color: var(--light-grey) !important;
 }
 
 /* temporary fix for iframe windows */
+/* treating this explore web search as an iframe */
+.docs-explore-serp-webresultscard,
 iframe {
-  filter: contrast(0.9) invert(1);
+  filter: contrast(0.85) invert(1);
 }
 
 .goog-menuitem-checkbox.goog-menuitem-checkbox {
@@ -68,6 +75,11 @@ iframe {
   background-color: transparent !important;
 }
 
+.goog-flat-button-focused {
+  background-color: transparent !important;
+  border-color: var(--light-grey) !important;
+}
+
 .jfk-button-hover {
   background-color: var(--light-grey) !important;
 }
@@ -98,7 +110,11 @@ iframe {
   border-color: transparent !important;
 }
 
-.goog-inline-block:not(_):not(_):not(_) {
+.jfk-button-hover:not(_):not(_):not(_):not(_):not(_):not(_) {
+  box-shadow: none !important;
+}
+
+.goog-inline-block:not(.jfk-button-action):not(_):not(_):not(_) {
   background-color: transparent !important;
 }
 
@@ -386,6 +402,46 @@ iframe {
   color: var(--dark-grey) !important;
 }
 
+.docs-explore-dataview {
+  background-color: var(--medium-grey) !important;
+}
+
+.docs-explore-widget {
+  background-color: var(--light-grey) !important;
+  color: var(--text) !important;
+}
+
+.docs-explore-icon {
+  filter: invert(1);
+}
+
+.docs-explore-sidebar-title {
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+  border-color: var(--medium-grey) !important;
+}
+
+.docs-explore-emptylist-title {
+  color: var(--text) !important;
+}
+
+.docs-explore-searchbar-ac-renderer {
+  background-color: var(--light-grey) !important;
+  color: var(--text);
+}
+
+.docs-explore-searchbar-ac-row:hover {
+  background-color: var(--text-disabled) !important;
+}
+
+.docs-icon-search-this-document {
+  filter: invert(1);
+}
+
+.docs-explore-tabbar-tab-label {
+  color: var(--text) !important;
+}
+
 /* Editor background */
 #docs-editor,
 #docs-editor-container,
@@ -429,6 +485,32 @@ iframe {
 .goog-control-focused {
   background-color: var(--light-grey) !important;
   border: 0 !important;
+}
+
+/* Insert Special Characters */
+.ita-cp-hwt,
+.ita-hwt-canvas {
+  background-color: var(--light-grey) !important;
+}
+
+.goog-char-picker-grid,
+.goog-char-picker-grid .goog-flat-button,
+.ita-cp-search {
+  border-color: var(--light-grey) !important;
+}
+
+.ita-cp-search input {
+  border-color: var(--light-grey) !important;
+  background-color: var(--medium-grey) !important;
+  color: var(--text) !important;
+}
+
+.ita-cp-search input::placeholder {
+  color: var(--text-disabled) !important;
+}
+
+.ita-cp-lens {
+  filter: contrast(0.5) invert(1);
 }
 
 /* Comment Modal */
@@ -497,6 +579,7 @@ iframe {
   color: var(--text) !important;
 }
 
+.docs-gm .docs-explore-emptylist-learnmore:not(_):not(_):not(_),
 .docos-new-comment-button,
 .goog-flat-menu-button {
   background-color: var(--medium-grey) !important;
