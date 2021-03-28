@@ -1,16 +1,15 @@
+const id = "docs-darkmode-extension";
 const cssURL = chrome.runtime.getURL("darkmode-direct.css");
 
 const turnOn = () => {
-  document.getElementById("docs-darkmode-extension").setAttribute("href", cssURL);
+  document.getElementById(id).setAttribute("href", cssURL);
 };
 
 const turnOff = () => {
-  document.getElementById("docs-darkmode-extension").removeAttribute("href");
+  document.getElementById(id).removeAttribute("href");
 };
 
 const initializeLinkElement = () => {
-  const id = "docs-darkmode-extension";
-
   if (document.getElementById(id)) return;
 
   console.warn("inserting css via injection script");
@@ -20,7 +19,6 @@ const initializeLinkElement = () => {
   style.setAttribute("type", "text/css");
   style.setAttribute("rel", "stylesheet");
   style.setAttribute("id", id);
-  // style.setAttribute("href", chrome.runtime.getURL("darkmode-direct.css"));
   document.documentElement.appendChild(style);
 };
 
