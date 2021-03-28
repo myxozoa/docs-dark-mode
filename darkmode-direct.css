@@ -6,6 +6,8 @@
   --dark-grey: #0f0f0f;
   --text: #b9bdc5;
   --text-disabled: #585b5e;
+  --highlight: #2c3b7b;
+  --highlight-normal: #236d6f;
 }
 
 :root,
@@ -39,7 +41,7 @@ body,
 /* treating this explore web search as an iframe */
 .docs-explore-serp-webresultscard,
 iframe {
-  filter: contrast(0.85) invert(1);
+  filter: contrast(0.85) invert(1) hue-rotate(180deg) saturate(170%);
 }
 
 .goog-menuitem-checkbox.goog-menuitem-checkbox {
@@ -60,6 +62,15 @@ iframe {
   background-color: var(--medium-grey) !important;
   border-color: var(--light-grey) !important;
   color: var(--text) !important;
+}
+
+.jfk-textinput::selection {
+  background-color: var(--text-disabled) !important;
+}
+
+.jfk-textinput:focus {
+  border-color: var(--light-grey) !important;
+  outline-color: var(--light-grey) !important;
 }
 
 .docs.gm .goog-toolbar-combo-button-input.goog-toolbar-combo-button-input.goog-toolbar-combo-button-input.goog-toolbar-combo-button-input:focus,
@@ -326,6 +337,15 @@ iframe {
   background-color: var(--medium-grey) !important;
 }
 
+#numberedListPresetMenuButton,
+#bulletedListPresetMenuButton {
+  border-left-color: var(--light-grey) !important;
+}
+
+.docs-gm .goog-toolbar-combo-button-input:focus:not(_):not(_):not(_) {
+  border-color: var(--text-disabled) !important;
+}
+
 /* Rulers */
 #kix-horizontal-ruler,
 #kix-vertical-ruler {
@@ -362,9 +382,10 @@ iframe {
   background-color: transparent !important;
   color: var(--text) !important;
 }
-#fontSizeDecrement:not(_):not(_):not(_),
-#fontSizeSelect:not(_):not(_):not(_),
-#fontSizeIncrement:not(_):not(_):not(_) {
+#fontSizeDecrement:not(_):not(_):not(_):not(_):not(_):not(_),
+#fontSizeSelect:not(_):not(_):not(_):not(_):not(_):not(_),
+#fontSizeSelect.docs-font-size-inc-dec-combobox:not(_):not(_):not(_):not(_):not(_):not(_),
+#fontSizeIncrement:not(_):not(_):not(_):not(_):not(_):not(_) {
   border-color: var(--light-grey) !important;
 }
 
@@ -456,6 +477,13 @@ iframe {
 
 .kix-page-column-footnotes-separator {
   border-color: var(--text) !important;
+}
+
+.kix-commentoverlayrenderer-highlighted {
+  background-color: var(--highlight) !important;
+}
+.kix-commentoverlayrenderer-normal {
+  background-color: var(--highlight-normal) !important;
 }
 
 /* Text editor */
