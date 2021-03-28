@@ -1,88 +1,61 @@
-const regex = new RegExp("^https*://docs.google.com/*", "g");
-
-const docsUrl = "https://docs.google.com/*";
+const docsUrl = "https://docs.google.com/document/*";
 const docsDarkmodeStatus = "docsDarkmodeStatus";
+const id = "docs-darkmode-extension";
 
 let darkmodeStatus = true;
 
-const removeCSS = () => {
-  const cssNode = document.getElementById("docs-darkmode-extension");
-  cssNode && cssNode.parentNode.removeChild(cssNode);
-};
-
-const insertCSS = () => {
-  const id = "docs-darkmode-extension";
-
-  if (document.getElementById(id)) return;
-
-  const style = document.createElement("link");
-  style.rel = "stylesheet";
-  style.type = "text/css";
-  style.href = chrome.runtime.getURL("darkmode-direct.css");
-  style.id = id;
-  document.getElementsByTagName("head")[0].appendChild(style);
-};
-
 const triggerDarkmode = (id) => {
-  if (darkmodeStatus) {
-    chrome.scripting.executeScript({
-      target: { tabId: id, allFrames: true },
-      function: insertCSS,
-    });
-  } else {
-    chrome.scripting.executeScript({
-      target: { tabId: id, allFrames: true },
-      function: removeCSS,
-    });
-  }
+  console.warn("called triggerdarkmode");
+  chrome.tabs.sendMessage(id, { darkmodeStatus });
+};
+
+const toggleExtensionIcon = (mode) => {
+  const onOrOff = mode ? "on" : "off";
+  chrome.action.setIcon({ path: { 16: `icons/dark-${onOrOff}-16x16.png`, 32: `icons/dark-${onOrOff}-32x32.png`, 64: `icons/dark-${onOrOff}-64x64.png` } });
 };
 
 // On initial load of the extension/chrome itself
-chrome.storage.sync.get([docsDarkmodeStatus], (result) => {
-  // If we have no previous setting then default to 'on'
-  if (result[docsDarkmodeStatus]) {
-    chrome.storage.sync.set({ [docsDarkmodeStatus]: true }, () => {
-      darkmodeStatus = true;
+chrome.runtime.onStartup.addListener(() => {
+  console.warn("only on startup");
+  chrome.storage.sync.get([docsDarkmodeStatus], (result) => {
+    // If we have no previous setting then default to 'on'
+    if (result[docsDarkmodeStatus] === undefined) {
+      chrome.storage.sync.set({ [docsDarkmodeStatus]: true }, () => {
+        darkmodeStatus = true;
 
-      chrome.action.setIcon({ path: { 16: "icons/dark-on-16x16", 32: "icons/dark-on-32x32", 64: "icons/dark-on-64x64" } });
+        toggleExtensionIcon(true);
 
-      // Tell every open docs tab to become dark mode
-      chrome.tabs.query({ url: docsUrl }, (tabs) => {
-        tabs.forEach((tab) => {
-          triggerDarkmode(tab.id);
+        // Tell every open docs tab to become dark mode
+        chrome.tabs.query({ url: docsUrl }, (tabs) => {
+          tabs.forEach((tab) => {
+            triggerDarkmode(tab.id);
+          });
         });
       });
-    });
-  } else {
-    darkmodeStatus = result[docsDarkmodeStatus];
+    } else {
+      darkmodeStatus = result[docsDarkmodeStatus];
 
-    const onOrOff = darkmodeStatus ? "on" : "off";
-    chrome.action.setIcon({ path: { 16: `icons/dark-${onOrOff}-16x16`, 32: `icons/dark-${onOrOff}-32x32`, 64: `icons/dark-${onOrOff}-64x64` } });
-  }
+      toggleExtensionIcon(darkmodeStatus);
+    }
+  });
 });
 
-// On refresh or the creation of a new docs tab send the darkmode message if necessary
+// When a navigation action is undertaken
 chrome.webNavigation.onCommitted.addListener(
-  (tab) => {
-    triggerDarkmode(tab.tabId);
-  },
-  { url: [{ urlMatches: docsUrl }] }
-);
-
-chrome.webNavigation.onHistoryStateUpdated.addListener(
-  (tab) => {
-    triggerDarkmode(tab.tabId);
+  (navigationEvent) => {
+    console.warn("dom loaded", navigationEvent);
+    triggerDarkmode(navigationEvent.tabId);
   },
   { url: [{ urlMatches: docsUrl }] }
 );
 
 // Triggered on every click of the extension's icon
 chrome.action.onClicked.addListener(() => {
+  console.warn("clicked");
   chrome.storage.sync.set({ [docsDarkmodeStatus]: !darkmodeStatus }, () => {
     darkmodeStatus = !darkmodeStatus;
 
-    const onOrOff = darkmodeStatus ? "on" : "off";
-    chrome.action.setIcon({ path: { 16: `icons/dark-${onOrOff}-16x16.png`, 32: `icons/dark-${onOrOff}-32x32.png`, 64: `icons/dark-${onOrOff}-64x64.png` } });
+    toggleExtensionIcon(darkmodeStatus);
 
     // Tell every open docs tab to toggle dark mode
     chrome.tabs.query({ url: docsUrl }, (tabs) => {

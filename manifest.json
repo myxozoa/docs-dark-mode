@@ -4,10 +4,17 @@
   "version": "0.1",
   "description": "Dark mode for Google Docs 2021",
   "permissions": ["tabs", "scripting", "storage", "webNavigation"],
-  "host_permissions": ["https://docs.google.com/*"],
+  "host_permissions": ["https://docs.google.com/document/*"],
   "background": {
     "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["https://docs.google.com/document/*"],
+      "js": ["insertcss.js"],
+      "run_at": "document_start"
+    }
+  ],
   "web_accessible_resources": [{ "resources": ["darkmode-direct.css"], "matches": ["https://docs.google.com/*"] }],
   "action": {
     "default_icon": {

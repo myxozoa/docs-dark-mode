@@ -1,4 +1,3 @@
-/* gonna be typing a whole lot */
 /* some of these classes were picked a little haphazardly, hopefully they wont be subject to much change over time */
 
 :root {
@@ -9,9 +8,16 @@
   --text-disabled: #585b5e;
 }
 
+:root,
 body {
+  min-height: 100vh;
   background-color: var(--light-grey);
   color: var(--text);
+}
+
+body,
+.docs-homescreen-freeze-el {
+  background: var(--medium-grey) !important;
 }
 
 /* Global fixes */
@@ -38,18 +44,23 @@ body {
   color: var(--text) !important;
 }
 
-.jfk-textinput {
+.jfk-textinput:not(_):not(_):not(_) {
   background-color: var(--medium-grey) !important;
   border-color: var(--light-grey) !important;
   color: var(--text) !important;
 }
 
+.docs.gm .goog-toolbar-combo-button-input.goog-toolbar-combo-button-input.goog-toolbar-combo-button-input.goog-toolbar-combo-button-input:focus,
 .jfk-textinput:focus {
   border-color: var(--text-disabled) !important;
 }
 
 .docs-material {
   background-color: var(--medium-grey) !important;
+}
+
+.jfk-button-hover {
+  background-color: var(--light-grey) !important;
 }
 
 /* App Switcher */
@@ -420,9 +431,17 @@ header,
 }
 
 /* google doc thumbnails */
-.docs-homescreen-templates-templateview,
+.docs-homescreen-templates-templateview-preview img,
 .docs-homescreen-grid-item-thumbnail {
   filter: contrast(0.9) invert(1);
+}
+
+.docs-homescreen-templates-templateview-preview {
+  border-color: var(--text-disabled) !important;
+}
+
+.docs-homescreen-templates-templateview-preview:hover {
+  border-color: var(--text) !important;
 }
 
 .docs-homescreen-itemholder-content,
@@ -437,6 +456,10 @@ header,
 .docs-homescreen-grid-item,
 .docs-homescreen-grid-item-metadata-container {
   border-color: var(--text-disabled) !important;
+}
+
+.docs-homescreen-templates-templateview-caption * {
+  color: var(--text) !important;
 }
 
 /* Google profile dropdown */
@@ -466,4 +489,24 @@ header,
 .gb_Db {
   background-color: var(--medium-grey) !important;
   border-color: var(--light-grey) !important;
+}
+
+.docs-homescreen-img {
+  filter: brightness(1.5);
+}
+
+.docs-homescreen-list-header,
+.docs-homescreen-list-item {
+  background-color: var(--medium-grey) !important;
+}
+
+.docs-homescreen-list-item.goog-control-hover {
+  background-color: var(--light-grey) !important;
+  border-radius: 0 !important;
+  border-width: 0 !important;
+}
+
+.docs-homescreen-item-overflow:hover,
+.docs-homescreen-item-overflow:focus {
+  background-color: var(--light-grey) !important;
 }
