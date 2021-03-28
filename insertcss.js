@@ -5,18 +5,17 @@ const turnOn = () => document.getElementById(id).setAttribute("href", cssURL);
 
 const turnOff = () => document.getElementById(id).removeAttribute("href");
 
-const initializeLinkElement = () => {
+// initialize link element at root
+(function () {
   if (document.getElementById(id)) return;
 
-  const style = document.createElement("link");
+  const styleElement = document.createElement("link");
 
-  style.setAttribute("type", "text/css");
-  style.setAttribute("rel", "stylesheet");
-  style.setAttribute("id", id);
-  document.documentElement.appendChild(style);
-};
-
-initializeLinkElement();
+  styleElement.setAttribute("type", "text/css");
+  styleElement.setAttribute("rel", "stylesheet");
+  styleElement.setAttribute("id", id);
+  document.documentElement.appendChild(styleElement);
+})();
 
 chrome.runtime.onMessage.addListener((request, _, sendResponse) => {
   if (request.darkmodeStatus) turnOn();
