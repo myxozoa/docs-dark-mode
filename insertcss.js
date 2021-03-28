@@ -1,18 +1,12 @@
 const id = "docs-darkmode-extension";
 const cssURL = chrome.runtime.getURL("darkmode-direct.css");
 
-const turnOn = () => {
-  document.getElementById(id).setAttribute("href", cssURL);
-};
+const turnOn = () => document.getElementById(id).setAttribute("href", cssURL);
 
-const turnOff = () => {
-  document.getElementById(id).removeAttribute("href");
-};
+const turnOff = () => document.getElementById(id).removeAttribute("href");
 
 const initializeLinkElement = () => {
   if (document.getElementById(id)) return;
-
-  console.warn("inserting css via injection script");
 
   const style = document.createElement("link");
 

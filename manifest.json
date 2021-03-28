@@ -2,7 +2,7 @@
   "name": "Docs DarkMode",
   "manifest_version": 3,
   "version": "0.1",
-  "description": "Dark mode for Google Docs 2021",
+  "description": "Darkmode for Google Docs",
   "permissions": ["tabs", "scripting", "storage", "webNavigation"],
   "host_permissions": ["https://docs.google.com/document/*"],
   "background": {
